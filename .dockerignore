@@ -12,6 +12,5 @@ venv/
 **/__pycache__/
 notebooks/
 reports/
-models/
 # Exclude data sources by default; mount them if needed
 /data/

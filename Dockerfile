@@ -26,6 +26,9 @@ COPY autoinsurance ./autoinsurance
 
 # Create models dir (mount or copy your model here at runtime)
 RUN mkdir -p /app/models
+# Copy model into image
+COPY models/model.pkl /app/models/model.pkl
+
 
 EXPOSE 8000
 
