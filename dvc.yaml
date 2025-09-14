@@ -5,7 +5,7 @@ stages:
     - cli/extract.py
     - autoinsurance/etl/extract.py
     - params.yaml
-    - data/raw/insurance_claims_complete.csv
+    - data/raw/insurance_claimsV4.csv
     outs:
     - data/interim/insurance_interim.parquet
   transform:
