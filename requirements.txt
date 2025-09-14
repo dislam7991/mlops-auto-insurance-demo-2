@@ -1,0 +1,10 @@
+pandas
+scikit-learn
+mlflow>=2.9,<3.0
+dvc[ssh]
+fastapi
+uvicorn[standard]
+evidently
+pandera
+pyyaml
+dagshub
