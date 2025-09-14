@@ -1,6 +1,6 @@
 paths:
   raw: data/raw/insurance_claims_complete.csv
-  interim: data/interim/insurance_interim.csv
+  interim: data/interim/insurance_interim.parquet
   processed: data/processed/dataset.parquet
   train: data/splits/train.parquet
   val: data/splits/val.parquet
