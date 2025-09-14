@@ -11,6 +11,13 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from evidently import Report
 from evidently.presets import DataDriftPreset
 
+import os
+uri = os.getenv("MLFLOW_TRACKING_URI")
+if uri:
+    mlflow.set_tracking_uri(uri)
+mlflow.set_experiment(os.getenv("MLFLOW_EXPERIMENT_NAME", "auto-insurance"))
+
+
 def evaluate_and_report(p):
     Path("reports").mkdir(parents=True, exist_ok=True)
 

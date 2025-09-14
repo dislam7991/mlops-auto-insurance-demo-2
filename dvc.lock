@@ -77,8 +77,8 @@ stages:
     deps:
     - path: autoinsurance/pipeline/train.py
       hash: md5
-      md5: 7dd1304d42412f9ee28931cfe9a4cfda
-      size: 5302
+      md5: c41abff5a5f81c0a35cd92cbabab30d0
+      size: 5498
     - path: cli/train.py
       hash: md5
       md5: afd137099ce46b30727910a1a1050c34
@@ -94,15 +94,15 @@ stages:
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: e1780ee27471dbd62042d98dcd515f9f
-      size: 44757
+      md5: 8e639f6e11482095e936beffdfe4487b
+      size: 44773
   evaluate:
     cmd: python -m cli.evaluate --params params.yaml
     deps:
     - path: autoinsurance/pipeline/evaluate.py
       hash: md5
-      md5: 5b48c337a61cf685b4f6bf15022647c2
-      size: 2862
+      md5: c92ab8c86a4bca0398cfb0a7a981026f
+      size: 3038
     - path: cli/evaluate.py
       hash: md5
       md5: 9ee2998a489cb2459d4fa0f879a79dcd
@@ -113,8 +113,8 @@ stages:
       size: 41759
     - path: models/model.pkl
       hash: md5
-      md5: e1780ee27471dbd62042d98dcd515f9f
-      size: 44757
+      md5: 8e639f6e11482095e936beffdfe4487b
+      size: 44773
     - path: params.yaml
       hash: md5
       md5: 34093b8eef60b51b47e7da7e7975db2f

@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+joblib
+pandas
+scikit-learn
+pyyaml

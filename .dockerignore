@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+.git/
+.gitignore
+.dvc/
+**/.ipynb_checkpoints/
+**/__pycache__/
+notebooks/
+reports/
+models/
+# Exclude data sources by default; mount them if needed
+/data/

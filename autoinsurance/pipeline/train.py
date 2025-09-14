@@ -14,6 +14,13 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score
 
+import os
+uri = os.getenv("MLFLOW_TRACKING_URI")
+if uri:
+    mlflow.set_tracking_uri(uri)
+mlflow.set_experiment(os.getenv("MLFLOW_EXPERIMENT_NAME", "auto-insurance"))
+
+
 def _read_any(path: str) -> pd.DataFrame:
     p = Path(path)
     if p.suffix.lower() == ".csv":
@@ -68,7 +75,7 @@ def train_and_log(p):
 
     clf = Pipeline([
         ("pre", pre),
-        ("lr", LogisticRegression(max_iter=2000, class_weight="balanced"))
+        ("lr", LogisticRegression(solver="newton-cg", max_iter=3000, class_weight="balanced"))
     ])
     
     with mlflow.start_run(run_name="baseline-logreg") as run:
