@@ -1,0 +1,12 @@
+paths:
+  raw: data/raw/insurance_claims_complete.csv
+  interim: data/interim/insurance_interim.csv
+  processed: data/processed/dataset.parquet
+  train: data/splits/train.parquet
+  val: data/splits/val.parquet
+  test: data/splits/test.parquet
+target: fraud_reported
+split:
+  test_size: 0.2
+  val_size: 0.125
+  random_state: 42

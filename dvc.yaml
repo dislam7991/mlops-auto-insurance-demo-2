@@ -1,0 +1,57 @@
+stages:
+  extract:
+    cmd: python -m cli.extract --params params.yaml
+    deps:
+    - cli/extract.py
+    - autoinsurance/etl/extract.py
+    - params.yaml
+    - data/raw/insurance_claims_complete.csv
+    outs:
+    - data/interim/insurance_interim.parquet
+  transform:
+    cmd: python -m cli.transform --params params.yaml
+    deps:
+    - cli/transform.py
+    - autoinsurance/etl/transform.py
+    - params.yaml
+    - data/interim/insurance_interim.parquet
+    outs:
+    - data/processed/dataset.parquet
+  split:
+    cmd: python -m cli.split --params params.yaml
+    deps:
+    - cli/split.py
+    - params.yaml
+    - data/processed/dataset.parquet
+    outs:
+    - data/splits/train.parquet
+    - data/splits/test.parquet
+  train:
+    cmd: python -m cli.train --params params.yaml
+    deps:
+    - cli/train.py
+    - autoinsurance/pipeline/train.py
+    - params.yaml
+    - data/splits/train.parquet
+    outs:
+    - models/model.pkl
+  evaluate:
+    cmd: python -m cli.evaluate --params params.yaml
+    deps:
+    - cli/evaluate.py
+    - autoinsurance/pipeline/evaluate.py
+    - params.yaml
+    - models/model.pkl
+    - data/splits/test.parquet
+    outs:
+    - reports/metrics.json
+    - reports/confusion_matrix.png
+  drift_report:
+    cmd: python -m cli.drift_report --params params.yaml
+    deps:
+    - cli/drift_report.py
+    - params.yaml
+    - data/splits/train.parquet
+    - data/splits/test.parquet
+    outs:
+    - reports/evidently_data_report.html
